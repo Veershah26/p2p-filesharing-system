@@ -26,5 +26,20 @@ public class Server {
             System.out.println(" ");
             System.out.println("Waiting For Client Connection ...");
         }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        while (true) {
+            try {
+                socket = server_socket.accept();
+            }
+
+            catch (IOException e) {
+                System.out.println("I/O Error: " + e);
+            }
+            new server_testclass(socket, global_array).start();
+        }
     }
 }
